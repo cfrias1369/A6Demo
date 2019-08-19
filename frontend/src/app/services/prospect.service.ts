@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProspectService {
 
-  uri = 'http://localhost:4000';
+  uri = 'http://localhost:4001';
 
   constructor(private http: HttpClient) { }
 
@@ -29,7 +29,7 @@ export class ProspectService {
     return this.http.post(`${this.uri}/prospects/add`, prospect);
   }
 
-  updateProspect(id : number, prospectToUpdate: {name, phoneNumber, initialContactDate, initialContactNotes}) {
+  updateProspect(id: number, prospectToUpdate: {name, phoneNumber, initialContactDate, initialContactNotes}) {
     const prospect = {
       name: prospectToUpdate.name,
       phoneNumber: prospectToUpdate.phoneNumber,
@@ -41,6 +41,6 @@ export class ProspectService {
   }
 
   deleteProspect(id) {
-    return this.http.get('${this.uri}/prospects/delete/${id}');
+    return this.http.get(`${this.uri}/prospects/delete/${id}`);
   }
 }
