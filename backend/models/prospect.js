@@ -9,12 +9,12 @@ let Prospect  = new Schema({
     phoneNumber: {
         type: String
     },
+    initialContactDate: {
+        type: String // TODO: Convert this to a date later
+    },
     initialContactNotes: {
         type: String
     },
-    initialContactDate: {
-        type: String // TODO: Convert this to a date later
-    }
 });
 
 export default mongoose.model('Prospects', Prospect, 'Prospects');

@@ -58,8 +58,8 @@ router.route('/prospects/update/:id').post((req, res) => {
         } else {
             prospect.name = req.body.name;
             prospect.phoneNumber = req.body.phoneNumber;
-            prospect.initialContactNotes = req.body.initialContactNotes;
             prospect.initialContactDate = req.body.initialContactDate;
+            prospect.initialContactNotes = req.body.initialContactNotes;
             prospect.save()
                 .then(prospect => {
                     res.json('Updated successfully');

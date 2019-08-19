@@ -26,8 +26,8 @@ export class CreateComponent implements OnInit {
     return this.fb.group({
       name: ['', Validators.required],
       phoneNumber: '',
-      initialContactNotess: '',
-      initialContactDate: ''
+      initialContactDate: '',
+      initialContactNotes: ''
     });
   }
 

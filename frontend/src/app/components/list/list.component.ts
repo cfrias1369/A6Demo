@@ -13,7 +13,7 @@ import { ProspectService } from '../../services/prospect.service';
 export class ListComponent implements OnInit {
 
   prospects: IProspect[];
-  displayedColumns = ['name', 'phoneNumber', 'initialContactNotes', 'initialContactDate', 'actions'];
+  displayedColumns = ['name', 'phoneNumber', 'initialContactDate', 'initialContactNotes', 'actions'];
 
   constructor(
     private prospectService: ProspectService,

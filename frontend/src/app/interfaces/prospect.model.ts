@@ -1,6 +1,6 @@
 export interface IProspect {
-  name: String;
-  phoneNumber: String;
-  initialContactNotes: String;
-  initialContactDate: String;
+  name: string;
+  phoneNumber: string;
+  initialContactDate: string;
+  initialContactNotes: string;
 }
