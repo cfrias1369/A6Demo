@@ -1,1 +1,41 @@
-<p>list works!</p>
+<div>
+  <br>
+  <mat-card>
+    <button mat-raised-button color="primary" routerLink="/create">Create New Prospect</button>
+    <br><br>
+    <mat-divider></mat-divider>
+    <br>
+    <table mat-table [dataSource]="prospects">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="phoneNumber">
+        <th mat-header-cell *matHeaderCellDef>Phone</th>
+        <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="initialContactNotes">
+        <th mat-header-cell *matHeaderCellDef>Initial Contact Notes</th>
+        <td mat-cell *matCellDef="let element"> {{element.initialContactNotes}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="initialContactDate">
+        <th mat-header-cell *matHeaderCellDef>Initial Contact Date</th>
+        <td mat-cell *matCellDef="let element"> {{element.initialContactDate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="mat-column-right">Actions</th>
+        <td mat-cell *matCellDef="let element" class="mat-column-right">
+          <button mat-button color="primary" (click)="editProspect(element._id)">Edit</button>
+          <button mat-button color="warn" (click)="deleteProspect(element._id)">Delete</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card>
+</div>
