@@ -11,7 +11,8 @@ const router = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/RELeadsDB');
+const mongoDB_URI = 'mongodb://localhost:27017/RELeadsDB';
+mongoose.connect(mongoDB_URI, { useFindAndModify: false });
 
 const connection = mongoose.connection;
 
