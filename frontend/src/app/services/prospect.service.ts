@@ -14,8 +14,8 @@ export class ProspectService {
     return this.http.get(`${this.uri}/prospects`);
   }
 
-  getProspectById(id: number) {
-    return this.http.get(`${this.uri}/prospect/${this.uri}`);
+  getProspectById(id: string) {
+    return this.http.get(`${this.uri}/prospects/${id}`);
   }
 
   addProspect(prospectToAdd: {name, phoneNumber, initialContactDate, initialContactNotes}) {
@@ -29,7 +29,7 @@ export class ProspectService {
     return this.http.post(`${this.uri}/prospects/add`, prospect);
   }
 
-  updateProspect(id: number, prospectToUpdate: {name, phoneNumber, initialContactDate, initialContactNotes}) {
+  updateProspect(id: string, prospectToUpdate: {name, phoneNumber, initialContactDate, initialContactNotes}) {
     const prospect = {
       name: prospectToUpdate.name,
       phoneNumber: prospectToUpdate.phoneNumber,
