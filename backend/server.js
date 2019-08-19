@@ -3,7 +3,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 
-import Truck from './models/Truck';
+import Prospect from './models/prospect';
 
 const app = express();
 const router = express.Router();
@@ -11,7 +11,7 @@ const router = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/ShippingDB');
+mongoose.connect('mongodb://localhost:27017/RELeadsDB');
 
 const connection = mongoose.connection;
 
@@ -19,48 +19,48 @@ connection.once('open', () => {
     console.log('MongoDB connection established successfully.');
 });
 
-router.route('/trucks').get((req, res) => {
-    Truck.find((err, trucks) => {
+router.route('/prospects').get((req, res) => {
+    Prospect.find((err, prospects) => {
         if (err) {
             console.log(err);
         } else {
-            res.json(trucks);
+            res.json(prospects);
         }
     });
 });
 
-router.route('/trucks/:id').get((req, res) => {
-    Truck.findById(req.params.id, (err, truck) => {
+router.route('/prospects/:id').get((req, res) => {
+    Prospect.findById(req.params.id, (err, prospect) => {
         if (err) {
             console.log(err);
         } else {
-            res.json(truck);
+            res.json(prospect);
         }
     });
 });
 
-router.route('/trucks/add').post((req, res) => {
-    let truck = new Truck(req.body);
-    truck.save()
-        .then(truck => {
-            res.status(200).json({'truck': 'Added successfully'});            
+router.route('/prospects/add').post((req, res) => {
+    let prospect = new Prospect(req.body);
+    prospect.save()
+        .then(prospect => {
+            res.status(200).json({'prospect': 'Added successfully'});            
         })
         .catch(err => {
             res.status(400).send('Failed to create new record');
         });
 });
 
-router.route('/trucks/update/:id').post((req, res) => {
-    Truck.findById(req.params.id, (err, truck) => {
-        if (!truck) {
+router.route('/prospects/update/:id').post((req, res) => {
+    Prospect.findById(req.params.id, (err, prospect) => {
+        if (!prospect) {
             return next(new Error('Could not load document'));
         } else {
-            truck.vin = req.body.vin;
-            truck.description = req.body.description;
-            truck.capacityInTons = req.body.capacityInTons;
-            truck.capacityInCubicYards = req.body.capacityInCubicYards;
-            truck.save()
-                .then(truck => {
+            prospect.name = req.body.name;
+            prospect.phoneNumber = req.body.phoneNumber;
+            prospect.initialContactNotes = req.body.initialContactNotes;
+            prospect.initialContactDate = req.body.initialContactDate;
+            prospect.save()
+                .then(prospect => {
                     res.json('Updated successfully');
                 })
                 .catch(err => {
@@ -70,8 +70,8 @@ router.route('/trucks/update/:id').post((req, res) => {
     });
 });
 
-router.route('/trucks/delete/:id').get((req, res) => {
-    Truck.findByIdAndRemove({_id: req.params.id}, (err, truck) => {
+router.route('/prospects/delete/:id').get((req, res) => {
+    Prospect.findByIdAndRemove({_id: req.params.id}, (err, prospect) => {
         if (err) {
             console.log(err);
             res.json(err);
