@@ -34,6 +34,11 @@ import { EditComponent as ClientEditComponent } from './components/clients/edit/
 
 import { ProspectService } from './services/prospect.service';
 import { ClientService } from './services/client.service';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MainComponent } from './components/main/main.component';
 
 const routes: Routes = [
   { path: 'prospects/create', component: ProspectCreateComponent },
@@ -42,7 +47,7 @@ const routes: Routes = [
   { path: 'clients/create', component: ClientCreateComponent },
   { path: 'clients/edit/:id', component: ClientEditComponent },
   { path: 'clients/list', component: ClientListComponent },
-  { path: '', redirectTo: 'clients/list', pathMatch: 'full' },
+  { path: '', component: MainComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
@@ -54,6 +59,8 @@ const routes: Routes = [
     ClientListComponent,
     ClientCreateComponent,
     ClientEditComponent,
+    MainNavComponent,
+    MainComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +80,9 @@ const routes: Routes = [
     MatTableModule,
     MatDividerModule,
     MatSnackBarModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [ProspectService, ClientService],
   bootstrap: [AppComponent]
