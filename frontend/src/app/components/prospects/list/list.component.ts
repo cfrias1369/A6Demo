@@ -46,4 +46,32 @@ export class ListComponent implements OnInit {
         this.fetchProspects();
       });
   }
+
+  promoteToClient(id) {
+    // const clientToAdd: IClient = new Object() as IClient;
+
+    // clientToAdd.firstName = this.prospects.find(() => )
+
+    // this.clientService.addClient(clientToAdd)
+    //   .subscribe(() => {
+    //     this.router.navigate([`${this.componentPath}/list`]);
+    //   });
+
+    let prospect: IProspect;
+
+    prospect = this.prospects.find((p) => {
+      if (p._id === id) {
+        return p;
+      }
+    });
+
+    this.router.navigate([`clients/create`], {
+      queryParams: {
+        firstName: prospect.name,
+        phoneNumber1: prospect.phoneNumber,
+        initialContactDate: prospect.initialContactDate,
+        initialContactNotes: prospect.initialContactNotes
+      }
+    });
+  }
 }

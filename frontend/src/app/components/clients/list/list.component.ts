@@ -37,7 +37,7 @@ export class ListComponent implements OnInit {
   }
 
   editClient(id) {
-    this.router.navigate([`/${this.componentPath}/edit/${id}`]);
+    this.router.navigate([`${this.componentPath}/edit/${id}`]);
   }
 
   deleteClient(id) {
