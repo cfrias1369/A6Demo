@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { IClient } from '../../../interfaces/client.model';
 import { ClientService } from '../../../services/client.service';
@@ -15,11 +15,13 @@ export class CreateComponent implements OnInit {
   createForm: FormGroup;
 
   componentPath = 'clients';
+  backLink = '../list';
 
   constructor(
     private clientService: ClientService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.createForm = this.createCreateForm();
   }
@@ -44,6 +46,13 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.backLink = '/prospects/list';
+      this.createForm.get('firstName').setValue(params.firstName);
+      this.createForm.get('phoneNumber1').setValue(params.phoneNumber1);
+      this.createForm.get('initialContactDate').setValue(params.initialContactDate);
+      this.createForm.get('initialContactNotes').setValue(params.initialContactNotes);
+    });
   }
 
 }
