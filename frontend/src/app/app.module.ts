@@ -46,7 +46,7 @@ const routes: Routes = [
   { path: 'clients/create', component: ClientCreateComponent },
   { path: 'clients/edit/:id', component: ClientEditComponent },
   { path: 'clients/list', component: ClientListComponent },
-  { path: '', redirectTo: 'clients/list', pathMatch: 'full' },
+  { path: '', redirectTo: 'prospects/list', pathMatch: 'full' },
 ];
 
 @NgModule({
