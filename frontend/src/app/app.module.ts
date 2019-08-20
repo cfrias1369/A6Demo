@@ -24,25 +24,36 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { ListComponent } from './components/list/list.component';
-import { CreateComponent } from './components/create/create.component';
-import { EditComponent } from './components/edit/edit.component';
+import { ListComponent as ProspectListComponent } from './components/prospects/list/list.component';
+import { CreateComponent as ProspectCreateComponent } from './components/prospects/create/create.component';
+import { EditComponent as ProspectEditComponent } from './components/prospects/edit/edit.component';
+
+import { ListComponent as ClientListComponent } from './components/clients/list/list.component';
+import { CreateComponent as ClientCreateComponent } from './components/clients/create/create.component';
+import { EditComponent as ClientEditComponent } from './components/clients/edit/edit.component';
 
 import { ProspectService } from './services/prospect.service';
+import { ClientService } from './services/client.service';
 
 const routes: Routes = [
-  { path: 'create', component: CreateComponent },
-  { path: 'edit/:id', component: EditComponent },
-  { path: 'list', component: ListComponent },
-  { path: '', redirectTo: 'list', pathMatch: 'full' },
+  { path: 'prospects/create', component: ProspectCreateComponent },
+  { path: 'prospects/edit/:id', component: ProspectEditComponent },
+  { path: 'prospects/list', component: ProspectListComponent },
+  { path: 'clients/create', component: ClientCreateComponent },
+  { path: 'clients/edit/:id', component: ClientEditComponent },
+  { path: 'clients/list', component: ClientListComponent },
+  { path: '', redirectTo: 'clients/list', pathMatch: 'full' },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
-    CreateComponent,
-    EditComponent,
+    ProspectListComponent,
+    ProspectCreateComponent,
+    ProspectEditComponent,
+    ClientListComponent,
+    ClientCreateComponent,
+    ClientEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,7 +74,7 @@ const routes: Routes = [
     MatDividerModule,
     MatSnackBarModule,
   ],
-  providers: [ProspectService],
+  providers: [ProspectService, ClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

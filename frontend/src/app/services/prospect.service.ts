@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { IProspect } from '../interfaces/prospect.model';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +20,7 @@ export class ProspectService {
     return this.http.get(`${this.uri}/prospects/${id}`);
   }
 
-  addProspect(prospectToAdd: {name, phoneNumber, initialContactDate, initialContactNotes}) {
+  addProspect(prospectToAdd: IProspect) {
     const prospect = {
       name: prospectToAdd.name,
       phoneNumber: prospectToAdd.phoneNumber,
@@ -29,7 +31,7 @@ export class ProspectService {
     return this.http.post(`${this.uri}/prospects/add`, prospect);
   }
 
-  updateProspect(id: string, prospectToUpdate: {name, phoneNumber, initialContactDate, initialContactNotes}) {
+  updateProspect(id: string, prospectToUpdate: IProspect) {
     const prospect = {
       name: prospectToUpdate.name,
       phoneNumber: prospectToUpdate.phoneNumber,

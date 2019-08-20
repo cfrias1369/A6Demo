@@ -5,8 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { MatSnackBar } from '@angular/material';
 
-import { IProspect } from '../../interfaces/prospect.model';
-import { ProspectService } from '../../services/prospect.service';
+import { IProspect } from '../../../interfaces/prospect.model';
+import { ProspectService } from '../../../services/prospect.service';
 
 @Component({
   selector: 'app-edit',
@@ -18,6 +18,8 @@ export class EditComponent implements OnInit {
   id: string;
   prospect: IProspect;
   updateForm: FormGroup;
+
+  componentPath = 'prospects';
 
   constructor(
     private prospectService: ProspectService,
@@ -56,6 +58,7 @@ export class EditComponent implements OnInit {
       this.snackBar.open('Prospect updated successfully', 'OK', {
         duration: 3000
       });
+      this.router.navigate([`${this.componentPath}/list`]);
     });
   }
 }

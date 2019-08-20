@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { IProspect } from '../../interfaces/prospect.model';
-import { ProspectService } from '../../services/prospect.service';
+import { IProspect } from '../../../interfaces/prospect.model';
+import { ProspectService } from '../../../services/prospect.service';
 
 @Component({
   selector: 'app-create',
@@ -13,6 +13,8 @@ import { ProspectService } from '../../services/prospect.service';
 export class CreateComponent implements OnInit {
 
   createForm: FormGroup;
+
+  componentPath = 'prospects';
 
   constructor(
     private prospectService: ProspectService,
@@ -34,7 +36,7 @@ export class CreateComponent implements OnInit {
   addProspect(prospectToAdd: IProspect) {
     this.prospectService.addProspect(prospectToAdd)
       .subscribe(() => {
-        this.router.navigate(['/list']);
+        this.router.navigate([`${this.componentPath}/list`]);
       });
   }
 

@@ -2,18 +2,30 @@
   <br>
   <mat-card>
     <section class="mat-typography">
-      <h3>Update Prospect</h3>
+      <h3>Update Client</h3>
     </section>
     <mat-divider></mat-divider>
     <br>
 
     <form [formGroup]="updateForm" class="update-form">
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Name" formControlName="name" #name>
+        <input matInput placeholder="First Name" formControlName="firstName" #firstName>
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Phone Number" formControlName="phoneNumber" #phoneNumber>
+        <input matInput placeholder="Last Name" formControlName="lastName" #lastName>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Middle Name" formControlName="middleName" #mName>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Phone Number 1" formControlName="phoneNumber1" #phoneNumber1>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Phone Number 2" formControlName="phoneNumber2" #phoneNumber2>
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
@@ -27,12 +39,13 @@
       <mat-divider></mat-divider>
       <br><br>
 
-      <button mat-raised-button color="accent" routerLink="/list">Back</button>
+      <button mat-raised-button color="accent" routerLink="../../list">Back</button>
       <button
         type="submit"
-        (click)="updateProspect({
-          name: name.value,
-          phoneNumber: phoneNumber.value,
+        (click)="updateClient({
+          firstName: firstName.value,
+          lastName: lastName.value,
+          phoneNumber1: phoneNumber1.value,
           initialContactDate: initialContactDate.value,
           initialContactNotes: initialContactNotes.value
         })"

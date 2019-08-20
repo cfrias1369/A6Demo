@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
 
-import { IProspect } from '../../interfaces/prospect.model';
-import { ProspectService } from '../../services/prospect.service';
+import { IProspect } from '../../../interfaces/prospect.model';
+import { ProspectService } from '../../../services/prospect.service';
 
 @Component({
   selector: 'app-list',
@@ -14,6 +14,8 @@ export class ListComponent implements OnInit {
 
   prospects: IProspect[];
   displayedColumns = ['name', 'phoneNumber', 'initialContactDate', 'initialContactNotes', 'actions'];
+
+  componentPath = 'prospects';
 
   constructor(
     private prospectService: ProspectService,
@@ -35,7 +37,7 @@ export class ListComponent implements OnInit {
   }
 
   editProspect(id) {
-    this.router.navigate([`/edit/${id}`]);
+    this.router.navigate([`${this.componentPath}/edit/${id}`]);
   }
 
   deleteProspect(id) {

@@ -1,0 +1,46 @@
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Create a New Prospect</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+
+    <form [formGroup]="createForm" class="create-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Name" formControlName="name" #name>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Phone Number" formControlName="phoneNumber" #phoneNumber>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Initial Contact Date" formControlName="initialContactDate" #initialContactDate>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Initial Contact Notes" formControlName="initialContactNotes" #initialContactNotes>
+      </mat-form-field>
+
+      <mat-divider></mat-divider>
+      <br><br>
+
+      <button mat-raised-button color="accent" routerLink="../list">Back</button>
+      <button
+        type="submit"
+        (click)="addProspect({
+          name: name.value,
+          phoneNumber: phoneNumber.value,
+          initialContactDate: initialContactDate.value,
+          initialContactNotes: initialContactNotes.value
+        })"
+        [disabled]="createForm.pristine || createForm.invalid"
+        mat-raised-button
+        color="primary"
+      >Save</button>
+
+    </form>
+  </mat-card>
+</div>
