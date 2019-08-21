@@ -31,8 +31,8 @@ export class ListComponent implements OnInit {
       .getClients()
       .subscribe((data: IClient[]) => {
         this.clients = data;
-        console.log('Data requested');
-        console.log(this.clients);
+      }, (err) => {
+        console.error(err);
       });
   }
 
