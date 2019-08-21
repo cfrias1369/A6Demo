@@ -28,7 +28,7 @@ app.use('/', router);
 router.route('/prospects/').get((req, res) => {
     Prospect.find((err, prospects) => {
         if (err) {
-            console.log(err);
+            console.error(err);
         } else {
             res.json(prospects);
         }
@@ -38,7 +38,7 @@ router.route('/prospects/').get((req, res) => {
 router.route('/prospects/:id').get((req, res) => {
     Prospect.findById(req.params.id, (err, prospect) => {
         if (err) {
-            console.log(err);
+            console.error(err);
         } else {
             res.json(prospect);
         }
@@ -79,7 +79,7 @@ router.route('/prospects/update/:id').post((req, res) => {
 router.route('/prospects/delete/:id').get((req, res) => {
     Prospect.findByIdAndRemove({_id: req.params.id}, (err, prospect) => {
         if (err) {
-            console.log(err);
+            console.error(err);
             res.json(err);
         } else {
             res.json('Removed successfully');
@@ -92,7 +92,7 @@ router.route('/prospects/delete/:id').get((req, res) => {
 router.route('/clients/').get((req, res) => {
     Client.find((err, clients) => {
         if (err) {
-            console.log(err);
+            console.error(err);
         } else {
             res.json(clients);
         }
@@ -102,7 +102,7 @@ router.route('/clients/').get((req, res) => {
 router.route('/clients/:id').get((req, res) => {
     Client.findById(req.params.id, (err, client) => {
         if (err) {
-            console.log(err);
+            console.error(err);
         } else {
             res.json(client);
         }
@@ -144,7 +144,7 @@ router.route('/clients/update/:id').post((req, res) => {
 router.route('/clients/delete/:id').get((req, res) => {
     Client.findByIdAndRemove({_id: req.params.id}, (err, client) => {
         if (err) {
-            console.log(err);
+            console.error(err);
             res.json(err);
         } else {
             res.json('Removed successfully');

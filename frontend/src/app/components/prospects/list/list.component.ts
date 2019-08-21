@@ -31,8 +31,8 @@ export class ListComponent implements OnInit {
       .getProspects()
       .subscribe((data: IProspect[]) => {
         this.prospects = data;
-        console.log('Data requested');
-        console.log(this.prospects);
+      }, (err) => {
+        console.error(err);
       });
   }
 
@@ -60,7 +60,7 @@ export class ListComponent implements OnInit {
     let prospect: IProspect;
 
     prospect = this.prospects.find((p) => {
-      if (p._id === id) {
+      if (p.id === id) {
         return p;
       }
     });

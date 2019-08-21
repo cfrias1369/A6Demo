@@ -47,7 +47,9 @@ export class CreateComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.backLink = '../../prospects/list';
+      if (params.firstName != null) {
+        this.backLink = '../../prospects/list';
+      }
       this.createForm.get('firstName').setValue(params.firstName);
       this.createForm.get('phoneNumber1').setValue(params.phoneNumber1);
       this.createForm.get('initialContactDate').setValue(params.initialContactDate);
