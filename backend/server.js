@@ -12,8 +12,14 @@ const router = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
 
-const mongoDB_URI = 'mongodb://localhost:27017/RELeadsDB';
-mongoose.connect(mongoDB_URI, { useFindAndModify: false });
+const environmentVars = {};
+
+{
+    environmentVars.MONGODB_URI = 'mongodb://localhost:27017/RELeadsDB';
+    environmentVars.API_URI_PORT = '4001';
+}
+
+mongoose.connect(environmentVars.MONGODB_URI, { useFindAndModify: false });
 
 const connection = mongoose.connection;
 
@@ -168,4 +174,4 @@ router.route('/clients/:id').delete((req, res) => {
 
 
 
-app.listen(4001, () => console.log('Express Server running on port 4001'));
+app.listen(environmentVars.API_URI_PORT, () => console.log(`Express Server running on port ${environmentVars.API_URI_PORT}`));

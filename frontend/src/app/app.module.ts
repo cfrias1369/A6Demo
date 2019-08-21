@@ -39,6 +39,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MainComponent } from './components/main/main.component';
+import { EnvService } from './env.service';
 
 const routes: Routes = [
   { path: 'prospects/create', component: ProspectCreateComponent },
@@ -84,7 +85,7 @@ const routes: Routes = [
     MatSidenavModule,
     MatListModule,
   ],
-  providers: [ProspectService, ClientService],
+  providers: [EnvService, ProspectService, ClientService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
