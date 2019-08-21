@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 
 import { IProspect } from '../interfaces/prospect.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProspectService {
 
-  //uri = 'http://localhost:4001';
-  uri = 'https://localhost:44383/api';
+  uri = 'http://localhost:4001';
+  // uri = 'https://localhost:44383/api';
 
   constructor(private http: HttpClient) { }
 
@@ -29,7 +30,6 @@ export class ProspectService {
       initialContactNotes: prospectToAdd.initialContactNotes
     };
 
-    // return this.http.post(`${this.uri}/prospects/add`, prospect);
     return this.http.post(`${this.uri}/prospects`, prospect);
   }
 
@@ -42,12 +42,10 @@ export class ProspectService {
       initialContactNotes: prospectToUpdate.initialContactNotes
     };
 
-    // return this.http.post(`${this.uri}/prospects/update/${id}`, prospect);
     return this.http.put(`${this.uri}/prospects/${id}`, prospect);
   }
 
   deleteProspect(id) {
-    // return this.http.get(`${this.uri}/prospects/delete/${id}`);
     return this.http.delete(`${this.uri}/prospects/${id}`);
   }
 }

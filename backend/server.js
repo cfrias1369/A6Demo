@@ -23,6 +23,14 @@ connection.once('open', () => {
 
 app.use('/', router);
 
+function populateItemId(o) {
+    o.id = o._id;
+}
+
+function createNewItemWithId(id) {
+    return new Object({ _id: id });
+}
+
 
 
 router.route('/prospects/').get((req, res) => {
@@ -30,6 +38,7 @@ router.route('/prospects/').get((req, res) => {
         if (err) {
             console.error(err);
         } else {
+            prospects.map((item) => {populateItemId(item);});
             res.json(prospects);
         }
     });
@@ -40,7 +49,7 @@ router.route('/prospects/:id').get((req, res) => {
         if (err) {
             console.error(err);
         } else {
-
+            populateItemId(prospect);
             res.json(prospect);
         }
     });
@@ -79,7 +88,7 @@ router.route('/prospects/:id').put((req, res) => {
 });
 
 router.route('/prospects/:id').delete((req, res) => {
-    Prospect.findByIdAndRemove({_id: req.params.id}, (err, prospect) => {
+    Prospect.findByIdAndRemove(createNewItemWithId(req.params.id), (err, prospect) => {
         if (err) {
             console.error(err);
             res.json(err);
@@ -96,6 +105,7 @@ router.route('/clients/').get((req, res) => {
         if (err) {
             console.error(err);
         } else {
+            clients.map((item) => {populateItemId(item)});
             res.json(clients);
         }
     });
@@ -106,6 +116,7 @@ router.route('/clients/:id').get((req, res) => {
         if (err) {
             console.error(err);
         } else {
+            populateItemId(client);
             res.json(client);
         }
     });
@@ -145,7 +156,7 @@ router.route('/clients/:id').put((req, res) => {
 });
 
 router.route('/clients/:id').delete((req, res) => {
-    Client.findByIdAndRemove({_id: req.params.id}, (err, client) => {
+    Client.findByIdAndRemove(createNewItemWithId(req.params.id), (err, client) => {
         if (err) {
             console.error(err);
             res.json(err);
