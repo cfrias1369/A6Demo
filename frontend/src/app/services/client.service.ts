@@ -2,16 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { IClient } from '../interfaces/client.model';
+import { EnvService } from '../env.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
 
-  uri = 'http://localhost:4001';
-  // uri = 'https://localhost:44383/api';
+  uri;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private envService: EnvService,
+    private http: HttpClient
+  ) {
+    this.uri = this.envService.API_URI;
+  }
 
   getClients() {
     return this.http.get(`${this.uri}/clients`);

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { IProspect } from '../interfaces/prospect.model';
+import { EnvService } from '../env.service';
 
 
 @Injectable({
@@ -9,10 +10,14 @@ import { IProspect } from '../interfaces/prospect.model';
 })
 export class ProspectService {
 
-  uri = 'http://localhost:4001';
-  // uri = 'https://localhost:44383/api';
+  uri;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private envService: EnvService,
+    private http: HttpClient
+  ) {
+    this.uri = this.envService.API_URI;
+  }
 
   getProspects() {
     return this.http.get(`${this.uri}/prospects`);
