@@ -3,6 +3,9 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 let Client  = new Schema({
+    id: {
+        type: String
+    },
     firstName: {
         type: String
     },

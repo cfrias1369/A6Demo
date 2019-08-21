@@ -40,12 +40,13 @@ router.route('/prospects/:id').get((req, res) => {
         if (err) {
             console.error(err);
         } else {
+
             res.json(prospect);
         }
     });
 });
 
-router.route('/prospects/add').post((req, res) => {
+router.route('/prospects/').post((req, res) => {
     let prospect = new Prospect(req.body);
     prospect.save()
         .then(prospect => {
@@ -56,11 +57,12 @@ router.route('/prospects/add').post((req, res) => {
         });
 });
 
-router.route('/prospects/update/:id').post((req, res) => {
+router.route('/prospects/:id').put((req, res) => {
     Prospect.findById(req.params.id, (err, prospect) => {
         if (!prospect) {
             return next(new Error('Could not load document'));
         } else {
+            prospect.id = req.params.id; // TODO: Perhaps this should be checked against the payload for consistency
             prospect.name = req.body.name;
             prospect.phoneNumber = req.body.phoneNumber;
             prospect.initialContactDate = req.body.initialContactDate;
@@ -76,7 +78,7 @@ router.route('/prospects/update/:id').post((req, res) => {
     });
 });
 
-router.route('/prospects/delete/:id').get((req, res) => {
+router.route('/prospects/:id').delete((req, res) => {
     Prospect.findByIdAndRemove({_id: req.params.id}, (err, prospect) => {
         if (err) {
             console.error(err);
@@ -109,7 +111,7 @@ router.route('/clients/:id').get((req, res) => {
     });
 });
 
-router.route('/clients/add').post((req, res) => {
+router.route('/clients/').post((req, res) => {
     let client = new Client(req.body);
     client.save()
         .then(client => {
@@ -120,11 +122,12 @@ router.route('/clients/add').post((req, res) => {
         });
 });
 
-router.route('/clients/update/:id').post((req, res) => {
+router.route('/clients/:id').put((req, res) => {
     Client.findById(req.params.id, (err, client) => {
         if (!client) {
             return next(new Error('Could not load document'));
         } else {
+            client.id = req.params.id; // TODO: Perhaps this should be checked against the payload for consistency
             client.firstName = req.body.firstName;
             client.lastName = req.body.lastName;
             client.phoneNumber1 = req.body.phoneNumber1;
@@ -141,7 +144,7 @@ router.route('/clients/update/:id').post((req, res) => {
     });
 });
 
-router.route('/clients/delete/:id').get((req, res) => {
+router.route('/clients/:id').delete((req, res) => {
     Client.findByIdAndRemove({_id: req.params.id}, (err, client) => {
         if (err) {
             console.error(err);
