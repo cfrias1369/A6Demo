@@ -60,7 +60,7 @@ export class ListComponent implements OnInit {
     let prospect: IProspect;
 
     prospect = this.prospects.find((p) => {
-      if (p._id === id) {
+      if (p.id === id) {
         return p;
       }
     });

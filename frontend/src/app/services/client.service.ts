@@ -8,8 +8,8 @@ import { IClient } from '../interfaces/client.model';
 })
 export class ClientService {
 
-  uri = 'http://localhost:4001';
-  //uri = 'https://localhost:44383/api';
+  //uri = 'http://localhost:4001';
+  uri = 'https://localhost:44383/api';
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +23,6 @@ export class ClientService {
 
   addClient(clientToAdd: IClient) {
     const client = {
-      _id: clientToAdd._id,
       firstName: clientToAdd.firstName,
       lastName: clientToAdd.lastName,
       phoneNumber1: clientToAdd.phoneNumber1,
