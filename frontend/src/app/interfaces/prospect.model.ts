@@ -1,5 +1,5 @@
 export interface IProspect {
-  id: string;
+  _id: string;
   name: string;
   phoneNumber: string;
   initialContactDate: string;

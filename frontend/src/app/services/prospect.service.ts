@@ -8,8 +8,8 @@ import { IProspect } from '../interfaces/prospect.model';
 })
 export class ProspectService {
 
-  //uri = 'http://localhost:4001';
-  uri = 'https://localhost:44383/api';
+  uri = 'http://localhost:4001';
+  //uri = 'https://localhost:44383/api';
 
   constructor(private http: HttpClient) { }
 
