@@ -8,8 +8,8 @@ import { IClient } from '../interfaces/client.model';
 })
 export class ClientService {
 
-  //uri = 'http://localhost:4001';
-  uri = 'https://localhost:44383/api';
+  uri = 'http://localhost:4001';
+  // uri = 'https://localhost:44383/api';
 
   constructor(private http: HttpClient) { }
 
@@ -30,7 +30,6 @@ export class ClientService {
       initialContactNotes: clientToAdd.initialContactNotes
     };
 
-    // return this.http.post(`${this.uri}/clients/add`, client);
     return this.http.post(`${this.uri}/clients`, client);
   }
 
@@ -44,12 +43,10 @@ export class ClientService {
       initialContactNotes: clientToUpdate.initialContactNotes
     };
 
-    // return this.http.post(`${this.uri}/clients/update/${id}`, client);
     return this.http.put(`${this.uri}/clients/${id}`, client);
   }
 
   deleteClient(id) {
-    // return this.http.get(`${this.uri}/clients/delete/${id}`);
     return this.http.delete(`${this.uri}/clients/${id}`);
   }
 }
