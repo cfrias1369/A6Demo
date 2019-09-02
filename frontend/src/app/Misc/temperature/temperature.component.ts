@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class TemperatureComponent implements OnInit {
 
   title = 'Temperature Conversion';
+  titleGraphicUrl = '/assets/images/tempconversion.jpg';
 
   constructor() { }
 
