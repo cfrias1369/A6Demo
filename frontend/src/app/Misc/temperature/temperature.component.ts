@@ -10,6 +10,7 @@ export class TemperatureComponent implements OnInit {
   title = 'Temperature Conversion';
   titleGraphicUrl = '/assets/images/tempconversion.jpg';
   clickCount = 0;
+  label = "";
 
   constructor() { }
 
