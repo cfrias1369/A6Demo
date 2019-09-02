@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemperatureComponent implements OnInit {
 
+  title = 'Temperature Conversion';
+
   constructor() { }
 
   ngOnInit() {
