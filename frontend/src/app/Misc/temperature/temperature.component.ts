@@ -10,7 +10,7 @@ export class TemperatureComponent implements OnInit {
   title = 'Temperature Conversion';
   titleGraphicUrl = '/assets/images/tempconversion.jpg';
   clickCount = 0;
-  label = "";
+  label = '';
 
   constructor() { }
 
@@ -19,5 +19,13 @@ export class TemperatureComponent implements OnInit {
 
   incrementClickCounter() {
     this.clickCount++;
+  }
+
+  modifyLabel(label) {
+    // tslint:disable-next-line: quotemark
+    this.label = label;
+    if (this.label === 'Charlie') {
+      alert('Hi, Charlie');
+    }
   }
 }

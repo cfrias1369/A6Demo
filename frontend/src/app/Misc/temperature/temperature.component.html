@@ -3,7 +3,7 @@
   <img [src]="titleGraphicUrl" alt="Temperature Conversion (image)">
 </div>
 
-<input type="text" [(ngModel)]="label">
+<input type="text" [ngModel]="label" (ngModelChange)="modifyLabel($event)">
 <p>Label: {{label}}</p>
 
 <app-celsius></app-celsius>
