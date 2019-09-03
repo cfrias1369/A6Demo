@@ -7,7 +7,7 @@
     <mat-divider></mat-divider>
     <br>
 
-    <input type="text" value="212">
+    <input type="text" [ngModel]="temperatureInCelsius" (ngModelChange)="onTemperatureChange($event)">
 
     <!-- <form [formGroup]="createForm" class="create-form">
       <mat-form-field class="field-full-width">
