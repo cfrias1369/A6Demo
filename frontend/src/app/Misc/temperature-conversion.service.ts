@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
-import * as Events from 'events';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TemperatureConversionService {
-  events: Events.EventEmitter;
+  private temperatureInCelsius = new BehaviorSubject<number>(100);
+  temperatureInCelsiusObservable = this.temperatureInCelsius.asObservable();
 
-  constructor() {
-    this.events = new Events.EventEmitter();
-  }
+  private temperatureInFahrenheit = new BehaviorSubject<number>(212);
+  temperatureInFahrenheitObservable = this.temperatureInFahrenheit.asObservable();
+
+  constructor() {}
 
   getTemperatureInCelsius(tempInFahrenheit) {
-
     return (tempInFahrenheit - 32) * 5.0 / 9.0;
   }
 
@@ -20,11 +21,13 @@ export class TemperatureConversionService {
     return tempInCelsius * 9.0 / 5.0 + 32;
   }
 
-  emitFahrenheitUpdated(value) {
-    this.events.emit('FahrenheitUpdated', value);
+  setTemperatureInCelsiusFromFahrenheit(tempInFahrenheit) {
+    this.temperatureInCelsius.next(this.getTemperatureInCelsius(tempInFahrenheit));
+    this.temperatureInFahrenheit.next(tempInFahrenheit);
   }
 
-  emitCelsiusUpdated(value) {
-    this.events.emit('CelsiusUpdated', value);
+  setTemperatureInFahrenheitFromCelsius(tempInCelsius) {
+    this.temperatureInCelsius.next(tempInCelsius);
+    this.temperatureInFahrenheit.next(this.getTemperatureInFahrenheit(tempInCelsius));
   }
 }

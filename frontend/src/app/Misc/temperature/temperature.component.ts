@@ -30,10 +30,10 @@ export class TemperatureComponent implements OnInit {
   }
 
   temperatureUpdated(temperature, unit): void {
-    if (unit === 'C') {
-      this.temperatureService.emitCelsiusUpdated(temperature);
-    } else if (unit === 'F') {
-      this.temperatureService.emitFahrenheitUpdated(temperature);
-    }
+    // if (unit === 'C') {
+    //   this.temperatureService.setTemperatureInCelsiusFromFahrenheit(temperature);
+    // } else if (unit === 'F') {
+    //   this.temperatureService.setTemperatureInFahrenheitFromCelsius(temperature);
+    // }
   }
 }

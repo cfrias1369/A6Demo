@@ -8,19 +8,17 @@ import { TemperatureConversionService } from '../temperature-conversion.service'
 })
 export class CelsiusComponent implements OnInit {
   @Input() temperatureInCelsius: number;
-  temperatureInFahrenheit: number;
 
   constructor(private temperatureService: TemperatureConversionService) { }
 
   ngOnInit() {
-    this.temperatureService.events.on('FahrenheitUpdated', (temperature) => {
-      this.temperatureInCelsius = this.temperatureService.getTemperatureInCelsius(temperature);
+    this.temperatureService.temperatureInCelsiusObservable.subscribe((temperature) => {
+      this.temperatureInCelsius = temperature;
     });
   }
 
   onTemperatureChange(value) {
     this.temperatureInCelsius = value;
-    this.temperatureInFahrenheit = this.temperatureService.getTemperatureInFahrenheit(value);
-    this.temperatureService.emitCelsiusUpdated(value);
+    this.temperatureService.setTemperatureInFahrenheitFromCelsius(value);
   }
 }
