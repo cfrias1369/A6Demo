@@ -1,0 +1,15 @@
+<h3>{{title}}</h3>
+<div>
+  <img [src]="titleGraphicUrl" alt="Temperature Conversion (image)">
+</div>
+
+<input type="text" [ngModel]="label" (ngModelChange)="modifyLabel($event)">
+<p>Label: {{label}}</p>
+
+<app-celsius></app-celsius>
+
+<app-fahrenheit></app-fahrenheit>
+
+<button (click)="incrementClickCounter()">Click</button>
+<p>Button was clicked {{clickCount}} times</p>
+
