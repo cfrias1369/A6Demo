@@ -13,7 +13,7 @@ export class CelsiusComponent implements OnInit {
   constructor(private temperatureService: TemperatureConversionService) { }
 
   ngOnInit() {
-    this.temperatureService.fahrenheitUpdated.subscribe((temperature) => {
+    this.temperatureService.events.on('FahrenheitUpdated', (temperature) => {
       this.temperatureInCelsius = this.temperatureService.getTemperatureInCelsius(temperature);
     });
   }

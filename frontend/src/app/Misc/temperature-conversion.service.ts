@@ -1,15 +1,18 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
+import * as Events from 'events';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TemperatureConversionService {
-  celsiusUpdated: EventEmitter<number> = new EventEmitter<number>();
-  fahrenheitUpdated: EventEmitter<number> = new EventEmitter<number>();
+  events: Events.EventEmitter;
 
-  constructor() { }
+  constructor() {
+    this.events = new Events.EventEmitter();
+  }
 
   getTemperatureInCelsius(tempInFahrenheit) {
+
     return (tempInFahrenheit - 32) * 5.0 / 9.0;
   }
 
@@ -18,10 +21,10 @@ export class TemperatureConversionService {
   }
 
   emitFahrenheitUpdated(value) {
-    this.fahrenheitUpdated.emit(value);
+    this.events.emit('FahrenheitUpdated', value);
   }
 
   emitCelsiusUpdated(value) {
-    this.celsiusUpdated.emit(value);
+    this.events.emit('CelsiusUpdated', value);
   }
 }
