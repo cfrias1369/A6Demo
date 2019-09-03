@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { TemperatureConversionService } from '../temperature-conversion.service';
 
 @Component({
   selector: 'app-fahrenheit',
@@ -8,20 +9,18 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class FahrenheitComponent implements OnInit {
   @Input() temperatureInFahrenheit: number;
   temperatureInCelsius: number;
-  @Output() temperatureUpdated: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(private temperatureService: TemperatureConversionService) { }
 
   ngOnInit() {
+    this.temperatureService.celsiusUpdated.subscribe((temperature) => {
+      this.temperatureInFahrenheit = this.temperatureService.getTemperatureInFahrenheit(temperature);
+    });
   }
 
   onTemperatureChange(value) {
     this.temperatureInFahrenheit = value;
-    this.temperatureInCelsius = this.getTemperatureInCelsius(value);
-    this.temperatureUpdated.emit(value);
-  }
-
-  getTemperatureInCelsius(tempInFahrenheit) {
-    return (tempInFahrenheit - 32) * 5.0 / 9.0;
+    this.temperatureInCelsius = this.temperatureService.getTemperatureInCelsius(value);
+    this.temperatureService.emitFahrenheitUpdated(value);
   }
 }

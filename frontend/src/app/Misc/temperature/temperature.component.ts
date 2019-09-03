@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { CelsiusComponent } from '../celsius/celsius.component';
-import { FahrenheitComponent } from '../fahrenheit/fahrenheit.component';
+import { Component, OnInit } from '@angular/core';
+import { TemperatureConversionService } from '../temperature-conversion.service';
 
 @Component({
   selector: 'app-temperature',
@@ -8,15 +7,12 @@ import { FahrenheitComponent } from '../fahrenheit/fahrenheit.component';
   styleUrls: ['./temperature.component.scss']
 })
 export class TemperatureComponent implements OnInit {
-  @ViewChild(CelsiusComponent, {static: true}) celsiusComponent;
-  @ViewChild(FahrenheitComponent, {static: true}) fahrenheitComponent;
-
   title = 'Temperature Conversion';
   titleGraphicUrl = '/assets/images/tempconversion.jpg';
   clickCount = 0;
   label = '';
 
-  constructor() { }
+  constructor(private temperatureService: TemperatureConversionService) { }
 
   ngOnInit() {
   }
@@ -35,9 +31,9 @@ export class TemperatureComponent implements OnInit {
 
   temperatureUpdated(temperature, unit): void {
     if (unit === 'C') {
-      this.fahrenheitComponent.temperatureInFahrenheit = this.celsiusComponent.getTemperatureInFahrenheit(temperature);
+      this.temperatureService.emitCelsiusUpdated(temperature);
     } else if (unit === 'F') {
-      this.celsiusComponent.temperatureInCelsius = this.fahrenheitComponent.getTemperatureInCelsius(temperature);
+      this.temperatureService.emitFahrenheitUpdated(temperature);
     }
   }
 }
