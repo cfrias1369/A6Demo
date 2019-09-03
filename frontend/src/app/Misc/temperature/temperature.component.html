@@ -6,9 +6,9 @@
 <input type="text" [ngModel]="label" (ngModelChange)="modifyLabel($event)">
 <p>Label: {{label}}</p>
 
-<app-celsius [temperatureInCelsius]=100 (temperatureUpdated)="temperatureUpdated($event, 'C')"></app-celsius>
+<app-celsius></app-celsius>
 
-<app-fahrenheit [temperatureInFahrenheit]="212" (temperatureUpdated)="temperatureUpdated($event, 'F')"></app-fahrenheit>
+<app-fahrenheit></app-fahrenheit>
 
 <button (click)="incrementClickCounter()">Click</button>
 <p>Button was clicked {{clickCount}} times</p>

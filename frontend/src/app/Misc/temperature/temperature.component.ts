@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TemperatureConversionService } from '../temperature-conversion.service';
 
 @Component({
   selector: 'app-temperature',
@@ -12,7 +11,7 @@ export class TemperatureComponent implements OnInit {
   clickCount = 0;
   label = '';
 
-  constructor(private temperatureService: TemperatureConversionService) { }
+  constructor() { }
 
   ngOnInit() {
   }
@@ -27,13 +26,5 @@ export class TemperatureComponent implements OnInit {
     if (this.label === 'Charlie') {
       alert('Hi, Charlie');
     }
-  }
-
-  temperatureUpdated(temperature, unit): void {
-    // if (unit === 'C') {
-    //   this.temperatureService.setTemperatureInCelsiusFromFahrenheit(temperature);
-    // } else if (unit === 'F') {
-    //   this.temperatureService.setTemperatureInFahrenheitFromCelsius(temperature);
-    // }
   }
 }

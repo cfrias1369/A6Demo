@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TemperatureConversionService } from '../temperature-conversion.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { TemperatureConversionService } from '../temperature-conversion.service'
   styleUrls: ['./fahrenheit.component.scss']
 })
 export class FahrenheitComponent implements OnInit {
-  @Input() temperatureInFahrenheit: number;
+  temperatureInFahrenheit: number;
 
   constructor(private temperatureService: TemperatureConversionService) { }
 
@@ -19,6 +19,6 @@ export class FahrenheitComponent implements OnInit {
 
   onTemperatureChange(value) {
     this.temperatureInFahrenheit = value;
-    this.temperatureService.setTemperatureInCelsiusFromFahrenheit(value);
+    this.temperatureService.setTemperatureFromFahrenheit(value);
   }
 }
