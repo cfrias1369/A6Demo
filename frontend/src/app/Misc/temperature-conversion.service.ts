@@ -5,11 +5,8 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class TemperatureConversionService {
-  private temperatureInCelsius = new BehaviorSubject<number>(20);
-  temperatureInCelsiusObservable = this.temperatureInCelsius.asObservable();
-
-  private temperatureInFahrenheit = new BehaviorSubject<number>(68);
-  temperatureInFahrenheitObservable = this.temperatureInFahrenheit.asObservable();
+  private temperatureChanged = new BehaviorSubject<number>(20);
+  temperatureChangedObservable = this.temperatureChanged.asObservable();
 
   constructor() {}
 
@@ -22,12 +19,10 @@ export class TemperatureConversionService {
   }
 
   setTemperatureFromFahrenheit(tempInFahrenheit) {
-    this.temperatureInCelsius.next(this.getTemperatureInCelsius(tempInFahrenheit));
-    this.temperatureInFahrenheit.next(tempInFahrenheit);
+    this.temperatureChanged.next(this.getTemperatureInCelsius(tempInFahrenheit));
   }
 
   setTemperatureFromCelsius(tempInCelsius) {
-    this.temperatureInCelsius.next(tempInCelsius);
-    this.temperatureInFahrenheit.next(this.getTemperatureInFahrenheit(tempInCelsius));
+    this.temperatureChanged.next(tempInCelsius);
   }
 }
