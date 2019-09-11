@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TemperatureComponent } from './temperature.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { CelsiusComponent } from '../celsius/celsius.component';
+import { FahrenheitComponent } from '../fahrenheit/fahrenheit.component';
+import { MatDivider, MatCard } from '@angular/material';
 
 describe('TemperatureComponent', () => {
   let component: TemperatureComponent;
@@ -8,7 +12,17 @@ describe('TemperatureComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TemperatureComponent ]
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+      ],
+      declarations: [
+        TemperatureComponent,
+        CelsiusComponent,
+        FahrenheitComponent,
+        MatDivider,
+        MatCard,
+      ],
     })
     .compileComponents();
   }));
