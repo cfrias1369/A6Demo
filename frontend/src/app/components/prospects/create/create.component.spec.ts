@@ -42,4 +42,19 @@ describe(`${testSubjectName}`, () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have name input', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    const nameItem = compiled.querySelector('form.create-form input.mat-input-element[formcontrolname=\'name\']');
+    expect(nameItem).toBeTruthy();
+    expect(nameItem.attributes.placeholder.value).toContain('Name');
+  });
+
+  it('should have 4 inputs', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    const inputItems = compiled.querySelectorAll('form.create-form input.mat-input-element');
+    // console.log('firstNameItem: ', firstNameItem);
+    expect(inputItems).toBeTruthy();
+    expect(inputItems.length).toEqual(4);
+  });
 });
