@@ -8,7 +8,8 @@ import { ObserversModule } from '@angular/cdk/observers';
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('CreateComponent', () => {
+const testSubjectName = 'CreateComponent (Clients)';
+describe(`${testSubjectName}`, () => {
   let component: CreateComponent;
   let fixture: ComponentFixture<CreateComponent>;
 

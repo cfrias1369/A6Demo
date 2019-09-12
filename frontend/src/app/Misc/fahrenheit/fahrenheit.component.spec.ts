@@ -4,7 +4,8 @@ import { FahrenheitComponent } from './fahrenheit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDivider, MatCard } from '@angular/material';
 
-describe('FahrenheitComponent', () => {
+const testSubjectName = 'FahrenheitComponent';
+describe(`${testSubjectName}`, () => {
   let component: FahrenheitComponent;
   let fixture: ComponentFixture<FahrenheitComponent>;
 

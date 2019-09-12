@@ -3,7 +3,8 @@ import { TestBed } from '@angular/core/testing';
 import { ClientService } from './client.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
-describe('ClientService', () => {
+const testSubjectName = 'ClientService';
+describe(`${testSubjectName}`, () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [
       HttpClientModule,

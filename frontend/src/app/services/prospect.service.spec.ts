@@ -3,7 +3,8 @@ import { TestBed } from '@angular/core/testing';
 import { ProspectService } from './prospect.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 
-describe('ProspectService', () => {
+const testSubjectName = 'ProspectService';
+describe(`${testSubjectName}`, () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [
       HttpClientModule,

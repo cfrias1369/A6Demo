@@ -6,7 +6,8 @@ import { CelsiusComponent } from '../celsius/celsius.component';
 import { FahrenheitComponent } from '../fahrenheit/fahrenheit.component';
 import { MatDivider, MatCard } from '@angular/material';
 
-describe('TemperatureComponent', () => {
+const testSubjectName = 'TemperatureComponent';
+describe(`${testSubjectName}`, () => {
   let component: TemperatureComponent;
   let fixture: ComponentFixture<TemperatureComponent>;
 

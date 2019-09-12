@@ -9,7 +9,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Overlay } from '@angular/cdk/overlay';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
-describe('EditComponent', () => {
+const testSubjectName = 'EditComponent (Prospects)';
+describe(`${testSubjectName}`, () => {
   let component: EditComponent;
   let fixture: ComponentFixture<EditComponent>;
 

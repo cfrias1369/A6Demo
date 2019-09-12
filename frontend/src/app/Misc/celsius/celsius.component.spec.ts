@@ -4,7 +4,8 @@ import { CelsiusComponent } from './celsius.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDivider, MatCard } from '@angular/material';
 
-describe('CelsiusComponent', () => {
+const testSubjectName = 'CelsiusComponent';
+describe(`${testSubjectName}`, () => {
   let component: CelsiusComponent;
   let fixture: ComponentFixture<CelsiusComponent>;
 

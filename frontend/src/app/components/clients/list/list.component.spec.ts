@@ -6,7 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 
-describe('ListComponent', () => {
+const testSubjectName = 'ListComponent (Clients)';
+describe(`${testSubjectName}`, () => {
   let component: ListComponent;
   let fixture: ComponentFixture<ListComponent>;
 

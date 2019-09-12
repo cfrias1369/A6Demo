@@ -9,7 +9,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { MainNavComponent } from './main-nav.component';
 
-describe('MainNavComponent', () => {
+const testSubjectName = 'MainNavComponent';
+describe(`${testSubjectName}`, () => {
   let component: MainNavComponent;
   let fixture: ComponentFixture<MainNavComponent>;
 
