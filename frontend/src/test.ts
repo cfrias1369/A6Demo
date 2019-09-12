@@ -16,7 +16,8 @@ getTestBed().initTestEnvironment(
 );
 // Then we find all the tests.
 const context = require.context('./', true, /\.spec\.ts$/);
-// This is an example of isolating particular tests
-//   const context = require.context('app/components/clients/create/create/', true, /\.spec\.ts$/);
+// These are examples of isolating particular tests
+//   const context = require.context('./app/components/clients', true, /create.*\.spec\.ts$/);
+//   const context = require.context('./app/components', true, /(create|edit)\..*\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
