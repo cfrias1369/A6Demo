@@ -2,7 +2,8 @@ import { TestBed } from '@angular/core/testing';
 
 import { TemperatureConversionService } from './temperature-conversion.service';
 
-describe('TemperatureConversionService', () => {
+const testSubjectName = 'TemperatureConversionService';
+describe(`${testSubjectName}`, () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {

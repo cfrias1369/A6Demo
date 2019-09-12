@@ -1,14 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CelsiusComponent } from './celsius.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDivider, MatCard } from '@angular/material';
 
-describe('CelsiusComponent', () => {
+const testSubjectName = 'CelsiusComponent';
+describe(`${testSubjectName}`, () => {
   let component: CelsiusComponent;
   let fixture: ComponentFixture<CelsiusComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CelsiusComponent ]
+      imports: [
+        FormsModule,
+        ReactiveFormsModule,
+      ],
+      declarations: [
+        CelsiusComponent,
+        MatDivider,
+        MatCard,
+      ],
     })
     .compileComponents();
   }));

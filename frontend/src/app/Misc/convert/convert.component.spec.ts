@@ -2,7 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConvertComponent } from './convert.component';
 
-describe('ConvertComponent', () => {
+const testSubjectName = 'ConvertComponent';
+describe(`${testSubjectName}`, () => {
   let component: ConvertComponent;
   let fixture: ComponentFixture<ConvertComponent>;
 
