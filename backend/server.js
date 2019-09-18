@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
@@ -12,14 +14,13 @@ const router = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
 
-const environmentVars = {};
+mongoose.connect(process.env.CRFPNC_MONGO_DB_URI, { useFindAndModify: false });
 
-{
-    environmentVars.MONGODB_URI = 'mongodb://localhost:27017/RELeadsDB';
-    environmentVars.API_URI_PORT = '4001';
-}
-
-mongoose.connect(environmentVars.MONGODB_URI, { useFindAndModify: false });
+// NOTE: To start mongo, follow these steps (as Admin):
+//   cd %PROGRAMFILES%\mongodb\Server\4.2\bin
+//   mongod -f mongod.cfg
+// To stop it, you may use this:
+//   mongo --eval "db.getSiblingDB('admin').shutdownServer()"
 
 const connection = mongoose.connection;
 
@@ -174,4 +175,4 @@ router.route('/clients/:id').delete((req, res) => {
 
 
 
-app.listen(environmentVars.API_URI_PORT, () => console.log(`Express Server running on port ${environmentVars.API_URI_PORT}`));
+app.listen(process.env.CRFPNC_API_URI_PORT, () => console.log(`Express Server running on port ${process.env.CRFPNC_API_URI_PORT}`));
