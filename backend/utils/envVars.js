@@ -13,6 +13,12 @@ class EnvVars {
         
             require('dotenv').config({path: dotPath});
 
+            // You may want to use this to load more than one file:
+            // Dotenv.load(
+            //     File.expand_path("../.#{APP_ENV}.env", __FILE__),
+            //     File.expand_path("../.env",  __FILE__)
+            // );
+
             EnvVars.isLoaded = true;
         }
     }
