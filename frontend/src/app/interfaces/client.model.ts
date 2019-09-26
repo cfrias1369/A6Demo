@@ -1,10 +1,10 @@
 export interface IClient {
-  id: string;
+  id?: string;
   firstName: string;
   lastName: string;
-  middleName: string;
+  middleName?: string;
   phoneNumber1: string;
-  phoneNumber2: string;
+  phoneNumber2?: string;
   initialContactDate: string;
   initialContactNotes: string;
 }
