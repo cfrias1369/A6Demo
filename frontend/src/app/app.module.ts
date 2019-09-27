@@ -40,7 +40,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MainComponent } from './components/main/main.component';
 import { EnvService } from './env.service';
-import { ConvertComponent } from './Misc/convert/convert.component';
 import { CelsiusComponent } from './Misc/celsius/celsius.component';
 import { FahrenheitComponent } from './Misc/fahrenheit/fahrenheit.component';
 import { TemperatureComponent } from './Misc/temperature/temperature.component';
@@ -67,7 +66,6 @@ const routes: Routes = [
     ClientEditComponent,
     MainNavComponent,
     MainComponent,
-    ConvertComponent,
     CelsiusComponent,
     FahrenheitComponent,
     TemperatureComponent,

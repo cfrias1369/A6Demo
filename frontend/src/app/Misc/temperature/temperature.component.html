@@ -1,8 +1,9 @@
 <h3>{{title}}</h3>
 <div>
-  <img [src]="titleGraphicUrl" alt="Temperature Conversion (image)">
+  <img [src]="titleGraphicUrl" width="100px" alt="Temperature Conversion (image)">
 </div>
 
+<p></p>
 <input type="text" [ngModel]="label" (ngModelChange)="modifyLabel($event)">
 <p>Label: {{label}}</p>
 
